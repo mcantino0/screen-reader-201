@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 6: Web Pages vs. Web Apps</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="Favicon.png" rel="icon" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #F1ECE8;
+      color: #1B4557;
+      min-height: 100vh;
+      display: flex;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      color: #081D21;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 700;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .main-content p, .main-content ul, .main-content ol {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 500;
+      font-size: 14pt;
+      color: #000;
+      line-height: 1.7;
+    }
+    .main-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+    }
+    .main-content th, .main-content td {
+      border: 1px solid #F1ECE8;
+      padding: 0.75rem;
+      text-align: left;
+      font-size: 1rem;
+      background: #fff;
+      color: #000;
+    }
+    .main-content th {
+      background: #B4CFCF;
+      color: #000;
+      font-weight: 700;
+    }
+    a {
+      color: #174A43;
+      text-decoration: underline;
+    }
+    a:focus, a:hover {
+      outline: 2px solid #174A43;
+      outline-offset: 2px;
+    }
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 220px;
+      background-color: #040F11;
+      color: #F9F9F9;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-top: 100px;
+      z-index: 10;
+      box-shadow: 2px 0 8px rgba(27,69,87,0.08);
+    }
+    .sidebar div {
+      width: 100%;
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+    .sidebar hr {
+      width: 80%;
+      border: 1px solid #F9F9F9;
+      margin: 0 auto 1.2rem auto;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+    .sidebar li {
+      width: 100%;
+    }
+    .sidebar a {
+      display: block;
+      color: #F9F9F9;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      padding: 1rem 1.5rem;
+      border-left: 4px solid transparent;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .sidebar a:focus, .sidebar a:hover, .sidebar a[aria-current="page"] {
+      color: #174A43;
+      background: #FDF6ED;
+      border-left: 4px solid #174A43;
+      outline: 2px solid #174A43;
+      outline-offset: 2px;
+    }
+    .layout {
+      margin-left: 220px;
+      width: calc(100vw - 220px);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: #F1ECE8;
+      box-sizing: border-box;
+    }
+    .banner {
+      position: relative;
+      width: 100%;
+      height: 240px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      background: #F1ECE8;
+      border-bottom: 2px solid #F1ECE8;
+    }
+    .banner-img {
+      width: 100%;
+      height: 720px;
+      object-fit: cover;
+      object-position: bottom;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      z-index: 1;
+    }
+    .banner-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      text-align: center;
+      color: #081D21;
+      font-size: 2rem;
+      font-weight: 700;
+      background: rgba(236,229,229,0.7);
+      border-radius: 0 0 1rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      padding: 0;
+    }
+    .main-content {
+      flex: 1;
+      padding: 2rem;
+      background: #F1ECE8;
+      border-radius: 0 0 1rem 1rem;
+      box-sizing: border-box;
+      min-height: 400px;
+    }
+    .nav-btn {
+      display: inline-block;
+      background-color: #174A43;
+      color: #fff;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 0.75rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      margin: 0 0.5rem;
+    }
+    .nav-btn:focus, .nav-btn:hover {
+      background-color: #081D21;
+      color: #F1ECE8;
+      outline: 2px solid #174A43;
+      outline-offset: 2px;
+    }
+    .prev-btn {
+      margin-right: auto;
+    }
+    .next-btn {
+      margin-left: auto;
+    }
+    figcaption {
+      font-size: 1.2em;
+      color: #000000;
+      margin-top: 8px;
+    }
+    figure {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <nav aria-label="Main navigation" class="sidebar">
+    <div style="width:100%; text-align:center; margin-top:0; margin-bottom:1rem;">
+      <span style="font-family:'Montserrat', Arial, sans-serif; font-size:2rem; font-weight:700; color:#F9F9F9; letter-spacing:2px;">SR 201</span>
+    </div>
+    <hr style="width:80%; border:1px solid #F9F9F9; margin:0 auto 1.2rem auto;" />
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="lessons.html">Lessons</a></li>
+      <li><a href="files.html">Resources</a></li>
+    </ul>
+  </nav>
+  <div class="layout">
+    <div class="banner" role="banner">
+      <img src="banner image.jpg" alt="SR 201 Banner" class="banner-img" />
+      <div class="banner-content">
+        <h1 style="color:#081D21; margin:0; position:relative; z-index:2;">Lesson 6: Web Pages vs. Web Apps</h1>
+      </div>
+    </div>
+    <main class="main-content" id="main-content" tabindex="-1">
+     <h2>The Exceptions to the Rule</h2>
+<p>All of the web navigation commands we've learned so far apply to web pages, but there are certain types of web pages that don't follow these rules. "Web apps" are websites that are meant to function like their own applications. These web apps often have their own keyboard commands that are required to use the app. When using web apps, you'll need to turn off your Virtual Cursor (JAWS + Z) so that the app can receive your keyboard commands directly, without the commands being intercepted by JAWS.</p>
+<p style="margin-left: 3em; margin-bottom: 0;"><strong>*Virtual Cursor Review*</strong></p>
+<ul style="margin-left: 2em; margin-top: 0;">
+  <li><strong>Virtual Cursor On:</strong> Use JAWS Quick Keys. JAWS receives all keyboard commands. Cannot type or use web-app commands.</li>
+  <li><strong>Virtual Cursor Off:</strong> Type in text fields or use web applications. Cannot use JAWS Quick Keys.</li>
+  <li><strong>Turn Virtual Cursor On/Off:</strong> JAWS + Z</li>
+</ul>
+<p>You may find that some of your web navigation commands can still work on a web app page, but they may not behave as expected. In some cases, you might want to use a mix of web navigation commands and web-app-specific commands. For example, you may want to use your web navigation commands to reach a particular area of the page or app, and then switch to the web-app-specific commands to continue working.</p>
+<p>Popular Web Apps</p>
+<ul>
+  <li>Google Docs / Slides / Sheets / Drive / Calendar</li>
+  <li>Gmail</li>
+  <li>Desmos</li>
+  <li>Slack</li>
+  <li>Many, many more</li>
+</ul>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 2rem;">
+        <a href="strategy-4.html" class="nav-btn prev-btn" role="button" aria-label="Go to Lesson 5: Strategy 4" tabindex="0">&larr; Previous</a>
+        <div style="flex: 1; display: flex; justify-content: center;">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSde_wsUU8aOaF6CF4RSRxEBTAMUOyaO3J3TaKD_cNwMFwGbhA/viewform?usp=dialog" class="nav-btn" role="button" aria-label="Go to Quiz 6" tabindex="0" target="_blank" rel="noopener">Quiz</a>
+        </div>
+        <a href="course-final.html" class="nav-btn next-btn" role="button" aria-label="Go to Course Final" tabindex="0">Next &rarr;</a>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

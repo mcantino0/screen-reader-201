@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lessons - SR 201</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="Favicon.png" rel="icon" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #F1ECE8;
+      color: #1B4557;
+      min-height: 100vh;
+      display: flex;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      color: #081D21;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 700;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+    }
+    .main-content p, .main-content ul, .main-content ol {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 500;
+      font-size: 14pt;
+      color: #000;
+      line-height: 1.7;
+    }
+    a {
+      color: #174A43;
+      text-decoration: underline;
+    }
+    a:focus, a:hover {
+      outline: 2px solid #174A43;
+      outline-offset: 2px;
+    }
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 220px;
+      background-color: #040F11;
+      color: #F9F9F9;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-top: 100px; /* Match index page */
+      z-index: 10;
+      box-shadow: 2px 0 8px rgba(27,69,87,0.08);
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+    .sidebar li {
+      width: 100%;
+    }
+    .sidebar a {
+      display: block;
+      color: #F9F9F9;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      padding: 1rem 1.5rem;
+      border-left: 4px solid transparent;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .sidebar a:focus, .sidebar a:hover, .sidebar a[aria-current="page"] {
+      color: #174A43;
+      background: #FDF6ED;
+      border-left: 4px solid #174A43;
+      outline: 2px solid #174A43;
+      outline-offset: 2px;
+    }
+    .layout {
+      margin-left: 220px;
+      width: calc(100vw - 220px);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: #F1ECE8;
+      box-sizing: border-box;
+    }
+    .banner {
+      position: relative;
+      width: 100%;
+      height: 240px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      background: #F1ECE8;
+      border-bottom: 2px solid #F1ECE8;
+    }
+    .banner-img {
+      width: 100%;
+      height: 720px;
+      object-fit: cover;
+      object-position: bottom;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      z-index: 1;
+    }
+    .banner-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      text-align: center;
+      color: #081D21;
+      font-size: 2rem;
+      font-weight: 700;
+      background: rgba(236,229,229,0.7);
+      border-radius: 0 0 1rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      padding: 0;
+    }
+    .main-content {
+      flex: 1;
+      padding: 2rem;
+      background: #F1ECE8;
+      border-radius: 0 0 1rem 1rem;
+      box-sizing: border-box;
+      min-height: 400px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem auto;
+      background: #fff;
+      color: #081D21;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 14pt;
+    }
+    .my-table td:nth-child(1),
+  .my-table th:nth-child(1) {
+    text-align: center;
+  }
+    th, td {
+      border: 1px solid #F1ECE8;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background: #B4CFCF;
+      font-weight: 700;
+    }
+    caption {
+      font-weight: 500;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: #174A43;
+    }
+    @media (max-width: 900px) {
+      .sidebar {
+        width: 160px;
+        padding-top: 80px;
+      }
+      .layout {
+        margin-left: 160px;
+        width: calc(100vw - 160px);
+      }
+      .banner-content {
+        font-size: 1.2rem;
+        padding: 0 1rem 0.5rem 1rem;
+      }
+      .main-content {
+        padding: 1rem;
+      }
+    }
+    @media (max-width: 600px) {
+      body {
+        flex-direction: column;
+      }
+      .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        align-items: center;
+        padding-top: 0;
+        box-shadow: none;
+      }
+      .sidebar ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+      .sidebar li {
+        width: auto;
+      }
+      .sidebar a {
+        padding: 0.5rem 1rem;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+      }
+      .sidebar a:focus, .sidebar a:hover, .sidebar a[aria-current="page"] {
+  border-bottom: 3px solid #174A43;
+  background: #F1ECE8;
+        color: #174A43;
+      }
+      .layout {
+        margin-left: 0;
+        width: 100vw;
+      }
+      .banner {
+        height: 80px;
+      }
+      .main-content {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav aria-label="Main navigation" class="sidebar">
+    <div style="width:100%; text-align:center; margin-top:0; margin-bottom:1rem;">
+      <span style="font-family:'Montserrat', Arial, sans-serif; font-size:2rem; font-weight:700; color:#F9F9F9; letter-spacing:2px;">SR 201</span>
+    </div>
+    <hr style="width:80%; border:1px solid #F9F9F9; margin:0 auto 1.2rem auto;" />
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="lessons.html" aria-current="page">Lessons</a></li>
+      <li><a href="files.html">Resources</a></li>
+    </ul>
+  </nav>
+  <div class="layout">
+    <div class="banner" role="banner">
+      <img src="banner image.jpg" alt="SR 201 Banner" class="banner-img" />
+      <div class="banner-content">
+        <h1 style="color:#081D21; margin:0;">Lessons</h1>
+      </div>
+    </div>
+    <main class="main-content" id="main-content" tabindex="-1">
+      <p>Use the links in the table below to start working through the course content. You can jump to any lesson or quiz at any time.</p>
+      <table class="my-table" style="width: 75%;" aria-label="Lessons Overview">
+        <colgroup>
+    <col style="width: 5%;">
+    <col style="width: 30%;">
+    <col style="width: 8%;">
+  </colgroup>
+        <thead>
+          <tr>
+            <th>Lesson #</th>
+            <th>Topic</th>
+            <th>Quiz</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td><a href="using-your-web-browser.html">Using Your Web Browser</a></td><td><a href="https://docs.google.com/forms/d/e/1FAIpQLSf6Nj90FSImesAI7GYmrSn0dtD5D6totyGey8LRtavHUC3oCQ/viewform?usp=dialog" target="_blank" rel="noopener">Quiz #1</a></td></tr>
+          <tr><td>2</td><td><a href="basic-web-navigation-commands.html">Basic Web Navigation Commands</a></td><td><a href="https://docs.google.com/forms/d/e/1FAIpQLSdtP-zKYyPGtdTEr0ZLoAKWUTv1XwrEtTbvuL102mkMqWiSTw/viewform?usp=dialog" target="_blank" rel="noopener">Quiz #2</a></td></tr>
+          <tr><td>3</td><td><a href="strategies-1-&-2.html">Strategies 1 & 2: Arrows and Tabs</a></td><td><a href="https://docs.google.com/forms/d/e/1FAIpQLSfrcs57z31bDJwVJbqrvnAUo5ucCG8tkD7PSLQ-O3Q99FT8fg/viewform?usp=dialog" target="_blank" rel="noopener">Quiz #3</a></td></tr>
+          <tr><td>4</td><td><a href="strategy-3.html">Strategy 3: Quick Keys</a></td><td><a href="https://docs.google.com/forms/d/e/1FAIpQLSdsbawGR3wgcss_USOD90l_Cr828ryGqCDjMRfXOvjpKMx_ig/viewform?usp=dialog" target="_blank" rel="noopener">Quiz #4</a></td></tr>
+          <tr><td>5</td><td><a href="strategy-4.html">Strategy 4: Elements Lists</a></td><td><a href="https://docs.google.com/forms/d/e/1FAIpQLSfSm82IPdAeLnbS2BWgnOi-M3Vwtrx2PERWJo8iVaYHRKVoLQ/viewform?usp=dialog" target="_blank" rel="noopener">Quiz #5</a></td></tr>
+          <tr><td>6</td><td><a href="web-pages-vs-web-apps.html">Web Pages vs. Web Apps: The Exceptions to the Rule</a></td><td><a href="https://docs.google.com/forms/d/e/1FAIpQLSde_wsUU8aOaF6CF4RSRxEBTAMUOyaO3J3TaKD_cNwMFwGbhA/viewform?usp=dialog" target="_blank" rel="noopener">Quiz #6</a></td></tr>
+          <tr><td>7</td><td><a href="course-final.html">Final</a></td><td><a href="https://docs.google.com/forms/d/e/1FAIpQLSc-GBDLZGtQQ8BQn6Wa5d9-7nbQ9UYfQD_LPsn8AuRMpIHOBw/viewform?usp=dialog" target="_blank" rel="noopener">Final Quiz</a></td></tr>
+        </tbody>
+      </table>
+    </main>
+  </div>
+</body>
+</html>
